@@ -1,84 +1,256 @@
-<h1 align="center">Simple mind map</h1>
 
-[![npm-version](https://img.shields.io/npm/v/simple-mind-map)](https://www.npmjs.com/package/simple-mind-map)
-![npm download](https://img.shields.io/npm/dm/simple-mind-map)
-[![GitHub issues](https://img.shields.io/github/issues/wanglin2/mind-map)](https://github.com/wanglin2/mind-map/issues)
-![license](https://img.shields.io/npm/l/express.svg)
-[![GitHub stars](https://img.shields.io/github/stars/wanglin2/mind-map)](https://github.com/wanglin2/mind-map/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/wanglin2/mind-map)](https://github.com/wanglin2/mind-map/network/members)
 
-[English](./README_EN.md) | 中文
+---
+🧠 MindList —— 思维导图 + 清单任务，双向同步
 
-> 中文名：思绪思维导图。一个简单&强大的 Web 思维导图库和思维导图软件。
+[!Vue 2](https://vuejs.org/)
+[!simple-mind-map](https://github.com/wanglin2/mind-map)
 
-本项目包含两部分：开源的JavaScript库和闭源的客户端软件。
 
-# 库、Web
+MindList = 思维导图 + 清单任务  
+在思维导图里勾选节点，清单主页自动同步进度；在清单里打勾，思维导图节点自动完成。  
+支持本地文件、多主题、AI 生成、大纲模式、导入/导出……一个工具搞定思考与执行。
 
-> 即本仓库中的代码，目前已进入低维护状态。
+---
+📸 功能预览
+[图片]
+[图片]
+[图片]
 
-- 一个 `js` 思维导图库，不依赖任何框架，可以用来快速完成 Web 思维导图产品的开发。
+✨ 核心亮点
 
->  开发文档：[https://wanglin2.github.io/mind-map-docs/](https://wanglin2.github.io/mind-map-docs/)
+- 🔄 双向同步：思维导图的复选框 ↔ 清单任务列表，任意一端操作，两端实时联动
+- ✅ 节点复选框：每个节点自带可勾选的方框，支持父子级联动（父勾选 → 全子勾选）
+- 📋 清单主页：卡片式管理多个清单，进度条、节点层级一目了然
+- 🎨 高度可定制：6 套预设主题 + 自定义主色 + 背景图片 + 透明度调节
+- 🧩 完整思维导图功能：富文本、图片、公式、超链接、标签、备注、外框、摘要、关联线……
+- 🧭 多种布局：逻辑结构图、思维导图、组织架构图、时间线、鱼骨图等
+- 💾 本地优先：数据存于 localStorage，支持打开/保存/另存为本地 .smm 文件
+- 🤖 AI 辅助：输入提示词自动生成思维导图（支持自定义 API）
+- 🌍 多语言：中文、English、繁体中文、Tiếng Việt
+- 📦 跨平台：网页版（GitHub Pages） + 桌面客户端（Electron）
+  
 
-- 一个 Web 思维导图，基于思维导图库、`Vue2.x`、`ElementUI` 开发，支持操作电脑本地文件，可以当做一个在线版思维导图应用使用，也可以自部署和二次开发。
+---
 
-> 在线地址：[https://wanglin2.github.io/mind-map/](https://wanglin2.github.io/mind-map/)
+🚀 快速开始
 
-了解更多信息：[README](./README_MORE_ZH.md)。
+网页版（无需安装）
+直接访问：[https://你的用户名.github.io/仓库名/](https://xn--6qqv7i14ofosyrb.github.io/仓库名/)  
+所有数据保存在你的浏览器中，关闭页面不丢失。
 
-# 客户端、插件
+桌面客户端（Windows / macOS / Linux）
+1. 前往 Releases 下载对应安装包
+2. 安装后打开，数据默认使用 localStorage（与网页版互通需手动导出/导入）
+  
+本地开发
+git clone https://github.com/你的用户名/仓库名.git
+cd 仓库名/web
+npm install
+npm run serve
+# 访问 http://localhost:8080
+功能汇总
 
-> 客户端和插件代码不开源，正在积极开发维护中。
+一、画布操作（原有）
 
-- 思绪思维导图客户端
+- 自由拖拽、缩放画布，鼠标滚轮缩放
+- 缩放工具栏（放大、缩小、适应画布、100%）
+- 小地图（MiniMap），快速定位当前视口位置
+- 画布滚动条
+- 框选节点（矩形拖拽多选）
+- 键盘方向键导航节点
+- 全屏模式
+- 演示模式（Demonstrate，节点逐步展示）
+- 触控事件支持（移动端触控手势）
+  
 
-本地化存储，隐私优先，数据安全，软件无需联网即可使用！
+---
 
-- [x] 1.支持创建无限数量的文件、节点（自由节点）；支持创建使用模板；
-- [x] 2.提供丰富的设置：基础设置、自定义字体/快捷键/右键菜单/图标、图床配置、AI配置、webdav云同步配置等等，可玩性很高；
-- [x] 3.支持思维导图、逻辑结构图、目录组织图、组织结构图、时间轴、鱼骨图、表格等多种结构类型；
-- [x] 4.内置上百个丰富好看的主题，也支持自定义主题及AI生成主题；
-- [x] 5.节点支持添加文本、图片、链接、图标、备注、附件、标签、概要节点、关联线、外框、标记、待办、描述、编号、数学公式等丰富内容；
-- [x] 6.支持导入XMind、FreeMind、Markdown、Txt、Xlsx等格式文件；支持导出为PNG、XMind、SVG、PDF、Markdown、Txt、Xlsx、FreeMind、Mermaid、Html等格式；
-- [x] 7.丰富的样式设置：文字、边框、背景、形状、线条、内外边距、图片标签布局等等；
-- [x] 8.支持历史版本管理、演示模式、AI生成、手绘风格、大纲编辑、水印、滚动条、同级节点对齐、小地图、进入指定节点、彩虹线条、节点双向链接、搜索替换等等实用有趣的功能；
+二、节点编辑（原有）
 
-支持Windows、Mac及Linux系统；支持中文简体、繁體中文、English、Tiếng Việt、Русский、日本語、한국어、Deutsch、Français、Português语言。
+- 双击节点进入文本编辑
+- 富文本编辑（加粗、斜体、颜色、字号等），可选开启/关闭
+- Tab 新增子节点，Enter 新增兄弟节点，Delete 删除节点
+- 拖拽节点调整位置
+- 节点图片插入、图片位置调整（上下左右）、图片删除、图片预览
+- 节点超链接
+- 节点备注（Note，支持 Markdown，双击跳出侧边栏编辑）
+- 节点标签（Tag）
+- 节点图标（从图标库选择，可自定义图标集）
+- 节点附件
+- 节点数学公式（Formula，LaTeX 语法）
+- 节点外框（OuterFrame，将节点分组圈起）
+- 节点摘要（Generalization，悬挂在一组节点旁的摘要说明）
+- 节点关联线（AssociativeLine，节点之间的自定义连线和标注）
+- 格式刷（Painter，复制节点样式并批量应用）
+- 节点自定义宽度拖拽调整
+- 剪切板文本粘贴智能处理（按换行分割创建多个节点）
+  
 
-下载地址：[Github](https://github.com/wanglin2/mind-map/releases)、[百度网盘](https://pan.baidu.com/s/1C8phEJ5pagAAa-o1tU42Uw?pwd=jqfb)、[夸克网盘](https://pan.quark.cn/s/2733982f1976)、[微软应用商店](https://apps.microsoft.com/detail/9p58vg94khcq?hl=zh-CN&gl=CN)
+---
 
-> 如果在macOS上安装后无法打开，报错**不受信任**或者**移到垃圾箱**，执行下面命令后再启动即可：
-> ``` shell
-> sudo xattr -d com.apple.quarantine /Applications/思绪思维导图.app
-> ```
+三、节点样式（原有）
 
-![](./assets/client/client1.png)
+- 字体、字号、字体颜色、背景色、边框色、边框宽度、边框样式
+- 节点形状（矩形、圆角矩形、菱形、平行四边形等）
+- 节点连线样式（直线、折线、曲线）
+- 连线颜色、宽度、虚线样式
+- 节点标签样式自定义
+- 关联线样式自定义
+- 全局基础样式批量设置
+  
 
-![](./assets/client/client2.png)
+---
 
-![](./assets/client/client3.png)
+四、主题与布局（原有）
 
-![](./assets/client/client4.png)
+- 内置多套主题模板（经典、暗色、彩色等，含第三方扩展主题包）
+- 切换布局：逻辑结构图、思维导图、组织架构图、目录组织图、时间线、垂直时间线、鱼骨图
+- 彩虹线条（RainbowLines，每条分支自动着不同颜色）
+- 暗黑模式（界面整体切换为深色）
+  
 
-![](./assets/client/client5.png)
+---
 
-![](./assets/client/client6.png)
+五、大纲模式（原有）
 
-- Obsidian插件
+- 工具栏切换到大纲视图，以列表树形式显示所有节点
+- 大纲内支持直接编辑节点文本
+- 大纲与思维导图实时双向同步
+  
 
-下载地址：[Github](https://github.com/wanglin2/obsidian-simplemindmap/releases)
+---
 
-![](./assets/ob/ob1.png)
+六、搜索（原有）
 
-![](./assets/ob/ob2.png)
+- 全局节点内容关键词搜索
+- 高亮匹配节点，支持上一个/下一个跳转
+  
 
-![](./assets/ob/ob3.png)
+---
 
-![](./assets/ob/ob4.png)
+七、右键菜单（原有）
 
-![](./assets/ob/ob5.png)
+- 右键节点弹出操作菜单（新增、删除、复制、粘贴、剪切、编辑、格式刷、展开/收起等）
+- 右键画布弹出画布操作菜单（全选、粘贴等）
+  
 
-- UTools插件
+---
 
-已上架[uTools](https://www.u.tools/)插件应用市场，可直接在`uTools`插件应用市场中搜索`思绪`进行安装，也可以直接访问该地址：[主页](https://www.u-tools.cn/plugins/detail/%E6%80%9D%E7%BB%AA%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE/)，点击右侧的【启动】按钮进行安装。
+八、导入 / 导出（原有）
+
+- 导出：PNG / JPG / SVG / PDF / Markdown / XMind / TXT
+- 导入：.smm / .json / .xmind / .md / .xlsx 文件
+- 支持拖拽文件到画布直接导入
+- 支持水印图片导出
+  
+
+---
+
+九、本地文件操作（原有）
+
+- 打开本地 .smm 文件（File System Access API）
+- 创建新的本地 .smm 文件
+- 另存为本地文件
+- 扫描本地文件目录，树形展示可导入/编辑的文件
+- 实时写入本地文件（编辑时自动同步，防止未保存丢失）
+  
+
+---
+
+十、快捷键（原有）
+
+- Tab：新增子节点
+- Enter：新增兄弟节点
+- Delete / Backspace：删除节点
+- Ctrl+C / V / X：复制 / 粘贴 / 剪切
+- Ctrl+Z / Y：撤销 / 重做
+- Ctrl+S：手动保存
+- F2：进入节点文本编辑
+- 方向键：节点焦点移动
+- Ctrl+A：全选节点
+- 可在快捷键面板查看全部快捷键
+  
+
+---
+
+十一、数据持久化（原有）
+
+- 数据存储于浏览器 localStorage，无需服务器
+- 多文件管理（多个清单独立存储，互不干扰）
+- 自动实时保存；Ctrl+S 手动强制保存
+- 旧版单文件数据自动迁移兼容
+  
+
+---
+
+十二、目标清单主页（新增）
+
+- 首页卡片网格展示所有清单
+- 每张卡片显示：名称、完成进度条、节点任务层级列表
+- 新建、删除、重命名清单
+- 顶部总完成度汇总（百分比）
+- 点击卡片图标可进入思维导图编辑页
+  
+
+---
+
+十三、清单节点任务列表（新增）
+
+- 节点层级展示（最多20层）
+- 折叠/展开子节点
+- 双击编辑节点文本
+- 新建子节点/新建二级节点
+- 节点特殊内容标记（图片、链接、图标、备注、公式等）
+- 节点复选框（完成标记），完成状态显示删除线+变灰
+- 勾选支持父子级联动（父节点勾选 → 所有子节点跟随）
+  
+
+---
+
+十四、节点复选框（新增）
+
+- 每个节点文字末尾嵌入正方形复选框
+- 方框大小随字号动态缩放，垂直对齐文字中心
+- 点击切换勾选，支持父子联动
+- 切换主题后复选框正常工作（WeakMap 管理实例）
+  
+
+---
+
+十五、双向数据同步（新增）
+
+- 思维导图复选框操作 → 实时同步到清单主页任务列表
+- 清单主页勾选操作 → 思维导图节点状态实时更新
+- 通过全局事件总线（$bus）通信，无需刷新
+  
+
+---
+
+十六、主页主题与外观（新增）
+
+- 6 套预设主题（白、暗黑、绿、蓝、橙、薰衣草）
+- 自定义主色（颜色选择器）
+- 卡片透明度调节（10%~100%）
+- 自定义背景图片，可框选显示区域、调节透明度
+- 所有外观设置持久化到 localStorage
+  
+
+---
+
+十七、AI 功能（原有）
+
+- AI 辅助生成思维导图（输入提示词自动生成节点结构）
+- AI 对话面板（AiChat）
+- AI 配置对话框（支持自定义 API 配置）（目前仅支持火山引擎）
+- 可在设置中开启/关闭 AI 功能
+  
+
+---
+
+十八、设置与其他
+
+- 全局设置面板（节点间距、字体、图片文字间距、展开按钮等）
+- 多语言支持（中文、英文、繁体中文、越南语）
+- 暗黑模式开关
+- 富文本模式开关
