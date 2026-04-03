@@ -28,6 +28,8 @@ jobs:
       # 3. 安装 web 依赖
       - name: 安装依赖
         working-directory: web
+        env:
+          ELECTRON_SKIP_BINARY_DOWNLOAD: 1
         run: npm install
 
       # 4. 构建 Vue 项目（GitHub Pages 模式）
