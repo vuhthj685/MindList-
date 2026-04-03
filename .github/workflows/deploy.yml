@@ -24,13 +24,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '18'
-          cache: 'npm'
-          cache-dependency-path: web/package-lock.json
 
       # 3. 安装 web 依赖
       - name: 安装依赖
         working-directory: web
-        run: npm ci
+        run: npm install
 
       # 4. 构建 Vue 项目（GitHub Pages 模式）
       - name: 构建项目
