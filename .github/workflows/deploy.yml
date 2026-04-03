@@ -1,0 +1,49 @@
+name: 部署 GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # 推送到 main 分支时自动触发
+
+# 允许 Actions 写入 GitHub Pages
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      # 1. 拉取代码
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      # 2. 安装 Node.js
+      - name: 设置 Node.js 环境
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+          cache-dependency-path: web/package-lock.json
+
+      # 3. 安装 web 依赖
+      - name: 安装依赖
+        working-directory: web
+        run: npm ci
+
+      # 4. 构建 Vue 项目（GitHub Pages 模式）
+      - name: 构建项目
+        working-directory: web
+        env:
+          GITHUB_PAGES: true
+          NODE_ENV: production
+        run: npm run build:ghpages
+
+      # 5. 部署到 gh-pages 分支
+      - name: 部署到 GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          force_orphan: true
