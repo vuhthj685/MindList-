@@ -12,38 +12,25 @@ permissions:
   id-token: write
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       # 1. 拉取代码
       - name: 检出代码
         uses: actions/checkout@v4
 
-      # 2. 安装 Node.js
-      - name: 设置 Node.js 环境
-        uses: actions/setup-node@v4
-        with:
-          node-version: '18'
+      # 2. 准备部署文件（直接使用 main 分支已构建好的文件）
+      - name: 准备部署文件
+        run: |
+          mkdir -p deploy
+          cp index.html deploy/
+          cp -r dist deploy/
+          touch deploy/.nojekyll
 
-      # 3. 安装 web 依赖
-      - name: 安装依赖
-        working-directory: web
-        env:
-          ELECTRON_SKIP_BINARY_DOWNLOAD: 1
-        run: npm install
-
-      # 4. 构建 Vue 项目（GitHub Pages 模式）
-      - name: 构建项目
-        working-directory: web
-        env:
-          GITHUB_PAGES: true
-          NODE_ENV: production
-        run: npm run build:ghpages
-
-      # 5. 部署到 gh-pages 分支
+      # 3. 部署到 gh-pages 分支
       - name: 部署到 GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+          publish_dir: ./deploy
           force_orphan: true
